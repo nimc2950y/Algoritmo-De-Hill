@@ -1,13 +1,11 @@
 import numpy as np
 
-
 # Función para convertir texto en una lista de números
 def texto_a_numeros(texto):
     numeros = []
     for letra in texto.replace(' ', '').upper():
         numeros.append(ord(letra) - ord('A'))
     return numeros
-
 
 # Función para convertir una lista de números en texto
 def numeros_a_texto(numeros):
@@ -16,12 +14,10 @@ def numeros_a_texto(numeros):
         texto += chr((numero % 26) + ord('A'))
     return texto
 
-
 # Función para multiplicar un bloque por la matriz de clave
 def multiplicar_matriz_bloque(clave, bloque):
     resultado = np.dot(clave, bloque) % 26
     return resultado
-
 
 # Función para cifrar el texto
 def cifrar(texto, clave):
@@ -40,7 +36,6 @@ def cifrar(texto, clave):
 
     return numeros_a_texto(texto_cifrado)
 
-
 # Función para descifrar el texto
 def descifrar(texto_cifrado, clave):
     n = clave.shape[0]
@@ -58,13 +53,13 @@ def descifrar(texto_cifrado, clave):
 
     return numeros_a_texto(texto_descifrado)
 
-
 # Matriz de clave (3x3)
 clave = np.array([[6, 24, 1],
                   [13, 16, 10],
                   [20, 17, 15]])
 
-texto = 'BIENVENIDOS A ALGEBRA LINEAL'
+# Entrada de texto por parte del usuario
+texto = input("Ingresa el texto a cifrar: ")
 
 # Cifrar y descifrar el texto
 texto_cifrado = cifrar(texto, clave)
